@@ -1,7 +1,9 @@
 package app;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class CalculadoraIMC extends javax.swing.JFrame {
 
@@ -43,7 +45,7 @@ public class CalculadoraIMC extends javax.swing.JFrame {
 
         jLabel5.setText("(cm)");
 
-        jButton1.setText(":: Calcular ::");
+        jButton1.setLabel("Calcular estado");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         imcLabel.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
@@ -126,25 +128,46 @@ public class CalculadoraIMC extends javax.swing.JFrame {
 
         imcLabel.setText(String.format("%.2f", imc));
         if (imc <= 18.5) {
+            Object colorFondoPanel = UIManager.get("OptionPane.background");
             ImageIcon icono = new ImageIcon(getClass().getResource("bajo peso.png"));
+            Object colorTextoOriginal = UIManager.get("OptionPane.messageForeground");
+            UIManager.put("OptionPane.messageForeground", Color.BLUE);
             JOptionPane.showMessageDialog(null, "bajo peso", "", JOptionPane.INFORMATION_MESSAGE, icono);
         } else if (imc <= 24.9) {
+            Object colorFondoPanel = UIManager.get("OptionPane.background");
             ImageIcon icono = new ImageIcon(getClass().getResource("peso normal.png"));
+            Object colorTextoOriginal = UIManager.get("OptionPane.messageForeground");
+            UIManager.put("OptionPane.messageForeground", Color.GREEN);
             JOptionPane.showMessageDialog(null, "peso normal", "", JOptionPane.INFORMATION_MESSAGE, icono);
-        }else if (imc <= 29.9) {
+        } else if (imc <= 29.9) {
+             Object colorFondoPanel = UIManager.get("OptionPane.background");
             ImageIcon icono = new ImageIcon(getClass().getResource("sobrepeso.png"));
+            Object colorTextoOriginal = UIManager.get("OptionPane.messageForeground");
+            UIManager.put("OptionPane.messageForeground", Color.YELLOW);
             JOptionPane.showMessageDialog(null, "sobrepeso", "", JOptionPane.INFORMATION_MESSAGE, icono);
-        }else if (imc <= 34.9) {
+        } else if (imc <= 34.9) {
+             Object colorFondoPanel = UIManager.get("OptionPane.background");
             ImageIcon icono = new ImageIcon(getClass().getResource("obesidad I.png"));
+            Object colorTextoOriginal = UIManager.get("OptionPane.messageForeground");
+            UIManager.put("OptionPane.messageForeground", Color.ORANGE);
             JOptionPane.showMessageDialog(null, "obesidad I", "", JOptionPane.INFORMATION_MESSAGE, icono);
-        }else if (imc <= 39.9) {
+        } else if (imc <= 39.9) {
+            Object colorFondoPanel = UIManager.get("OptionPane.background");
             ImageIcon icono = new ImageIcon(getClass().getResource("obesidad II.png"));
+            Object colorTextoOriginal = UIManager.get("OptionPane.messageForeground");
+            UIManager.put("OptionPane.messageForeground", Color.RED);
             JOptionPane.showMessageDialog(null, "obesidad II", "", JOptionPane.INFORMATION_MESSAGE, icono);
-        }else if (imc <= 49.9) {
+        } else if (imc <= 49.9) {
+            Object colorFondoPanel = UIManager.get("OptionPane.background");
             ImageIcon icono = new ImageIcon(getClass().getResource("obesidad III.png"));
+            Object colorTextoOriginal = UIManager.get("OptionPane.messageForeground");
+            UIManager.put("OptionPane.messageForeground", Color.PINK);
             JOptionPane.showMessageDialog(null, "obesidad III", "", JOptionPane.INFORMATION_MESSAGE, icono);
-        }else if(imc > 50) {
-             ImageIcon icono = new ImageIcon(getClass().getResource("obesidad IV.png"));
+        } else if (imc > 50) {
+            Object colorFondoPanel = UIManager.get("OptionPane.background");
+            ImageIcon icono = new ImageIcon(getClass().getResource("obesidad IV.png"));
+            Object colorTextoOriginal = UIManager.get("OptionPane.messageForeground");
+            UIManager.put("OptionPane.messageForeground", Color.BLACK);
             JOptionPane.showMessageDialog(null, "obesidad IV", "", JOptionPane.INFORMATION_MESSAGE, icono);
         }
 
