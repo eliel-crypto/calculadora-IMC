@@ -1,5 +1,6 @@
 package app;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class CalculadoraIMC extends javax.swing.JFrame {
@@ -50,54 +51,59 @@ public class CalculadoraIMC extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2))
+                .addContainerGap()
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pesoText, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                    .addComponent(alturaText))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imcLabel)
-                .addGap(86, 86, 86))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(alturaText, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pesoText, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(jLabel3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel5)))
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(imcLabel)
+                                .addGap(84, 84, 84))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(162, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 28, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pesoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
                             .addComponent(alturaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
                             .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(imcLabel)
-                        .addGap(26, 26, 26)))
-                .addComponent(jButton1)
-                .addGap(29, 29, 29))
+                        .addGap(24, 24, 24)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(imcLabel)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,19 +121,26 @@ public class CalculadoraIMC extends javax.swing.JFrame {
 
         imcLabel.setText(String.format("%.2f", imc));
         if (imc <= 18.5) {
-            JOptionPane.showMessageDialog(rootPane, "bajo peso");
+            ImageIcon icono = new ImageIcon(getClass().getResource("bajo peso.png"));
+            JOptionPane.showMessageDialog(null, "bajo peso", "", JOptionPane.INFORMATION_MESSAGE, icono);
         } else if (imc <= 24.9) {
-            JOptionPane.showMessageDialog(rootPane, "peso normal");
+            ImageIcon icono = new ImageIcon(getClass().getResource("peso normal.png"));
+            JOptionPane.showMessageDialog(null, "peso normal", "", JOptionPane.INFORMATION_MESSAGE, icono);
         }else if (imc <= 29.9) {
-            JOptionPane.showMessageDialog(rootPane, "sobrepeso");
+            ImageIcon icono = new ImageIcon(getClass().getResource("sobrepeso.png"));
+            JOptionPane.showMessageDialog(null, "sobrepeso", "", JOptionPane.INFORMATION_MESSAGE, icono);
         }else if (imc <= 34.9) {
-            JOptionPane.showMessageDialog(rootPane, "obesidad I");
+            ImageIcon icono = new ImageIcon(getClass().getResource("obesidad I.png"));
+            JOptionPane.showMessageDialog(null, "obesidad I", "", JOptionPane.INFORMATION_MESSAGE, icono);
         }else if (imc <= 39.9) {
-            JOptionPane.showMessageDialog(rootPane, "obesidad II");
+            ImageIcon icono = new ImageIcon(getClass().getResource("obesidad II.png"));
+            JOptionPane.showMessageDialog(null, "obesidad II", "", JOptionPane.INFORMATION_MESSAGE, icono);
         }else if (imc <= 49.9) {
-            JOptionPane.showMessageDialog(rootPane, "obesidad III");
+            ImageIcon icono = new ImageIcon(getClass().getResource("obesidad III.png"));
+            JOptionPane.showMessageDialog(null, "obesidad III", "", JOptionPane.INFORMATION_MESSAGE, icono);
         }else if(imc > 50) {
-            JOptionPane.showMessageDialog(rootPane, "obesidad IV");
+             ImageIcon icono = new ImageIcon(getClass().getResource("obesidad IV.png"));
+            JOptionPane.showMessageDialog(null, "obesidad IV", "", JOptionPane.INFORMATION_MESSAGE, icono);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
